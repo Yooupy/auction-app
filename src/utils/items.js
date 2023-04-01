@@ -1,0 +1,58 @@
+const items = [
+  {
+    id: 1,
+    title: "Playstation 5",
+    description: "Brand new Playstation 5 with 1TB storage.",
+    image: "https://source.unsplash.com/500x400/?playstation5",
+    minimumBid: 500,
+    currentBid: 550,
+    endTime: "2023-04-05T10:00:00Z",
+  },
+  {
+    id: 2,
+    title: "Apple MacBook Pro 2022",
+    description: "Latest MacBook Pro with M2 chip.",
+    image: "https://source.unsplash.com/500x400/?macbookpro",
+    minimumBid: 1500,
+    currentBid: 1600,
+    endTime: "2023-04-10T18:00:00Z",
+  },
+  {
+    id: 3,
+    title: "Canon EOS R6",
+    description: "Full-frame mirrorless camera with 24-105mm f/4L lens.",
+    image: "https://source.unsplash.com/500x400/?canon",
+    minimumBid: 2500,
+    currentBid: 2600,
+    endTime: "2023-04-15T20:00:00Z",
+  },
+  {
+    id: 4,
+    title: "iPhone 14 Pro",
+    description: "Upcoming iPhone with all-new design and A18 chip.",
+    image: "https://source.unsplash.com/500x400/?iphone",
+    minimumBid: 2000,
+    currentBid: 2100,
+    endTime: "2023-04-20T12:00:00Z",
+  },
+  {
+    id: 5,
+    title: "Samsung QLED 8K TV",
+    description: "8K QLED TV with 65-inch screen size.",
+    image: "https://source.unsplash.com/500x400/?samsung",
+    minimumBid: 3000,
+    currentBid: 3100,
+    endTime: "2023-04-25T16:00:00Z",
+  },
+  {
+    id: 6,
+    title: "DJI Mavic 3 Pro",
+    description: "Latest drone with 4K camera and 1-hour flight time.",
+    image: "https://source.unsplash.com/500x400/?drone",
+    minimumBid: 1200,
+    currentBid: 1300,
+    endTime: "2023-04-30T08:00:00Z",
+  },
+];
+
+export default items;

@@ -1,0 +1,47 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f50057;
+  color: #fff;
+  padding: 10px;
+}
+
+nav h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li:first-child {
+  margin-left: 0;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav button {
+  background-color: #fff;
+  color: #f50057;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+nav button:hover {
+  background-color: #f50057;
+  color: #fff;
+}
