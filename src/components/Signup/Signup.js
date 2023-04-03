@@ -1,21 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 import styles from "./Signup.module.scss";
-
-const useStyles = makeStyles({
-  textField: {
-    marginBottom: "1rem",
-  },
-  button: {
-    marginTop: "1rem",
-  },
-});
 
 function Signup() {
   const navigate = useNavigate();
-  const classes = useStyles();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -54,7 +43,6 @@ function Signup() {
         <TextField
           label="Name"
           variant="outlined"
-          className={classes.textField}
           name="name"
           value={formData.name}
           onChange={handleInputChange}
@@ -62,7 +50,6 @@ function Signup() {
         <TextField
           label="Email"
           variant="outlined"
-          className={classes.textField}
           name="email"
           value={formData.email}
           onChange={handleInputChange}
@@ -70,13 +57,12 @@ function Signup() {
         <TextField
           label="Password"
           variant="outlined"
-          className={classes.textField}
           type="password"
           name="password"
           value={formData.password}
           onChange={handleInputChange}
         />
-        <Button variant="contained" className={classes.button} type="submit">
+        <Button variant="contained" type="submit">
           Signup
         </Button>
       </form>
