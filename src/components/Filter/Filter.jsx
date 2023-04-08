@@ -26,16 +26,16 @@ const Filter = () => {
           label="Search"
           variant="outlined"
           size="medium"
-          sx={{ width: "60%" }}
+          sx={{ width: "400px" }}
         />
         <TextField
           id="news"
           label="News"
           variant="outlined"
           size="medium"
-          sx={{ width: "60%" }}
+          sx={{ width: "400px" }}
         />
-        <FormControl variant="outlined" sx={{ width: "60%" }}>
+        <FormControl variant="outlined" sx={{ width: "130px" }}>
           <InputLabel id="min-bid-label" sx={{ color: "black" }}>
             Min Bid
           </InputLabel>
@@ -45,7 +45,7 @@ const Filter = () => {
             <MenuItem value={200}>200</MenuItem>
           </Select>
         </FormControl>
-        <FormControl variant="outlined" sx={{ width: "60%" }}>
+        <FormControl variant="outlined" sx={{ width: "130px" }}>
           <InputLabel id="max-bid-label" sx={{ color: "black" }}>
             Max Bid
           </InputLabel>
