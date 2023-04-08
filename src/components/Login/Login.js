@@ -21,7 +21,7 @@ const Login = () => {
     event.preventDefault();
     try {
       await login(email, password);
-      navigate("/");
+      navigate("/profile");
     } catch (error) {
       console.log(error);
     }

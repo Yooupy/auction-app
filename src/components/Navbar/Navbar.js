@@ -19,6 +19,9 @@ const Navbar = () => {
               <Link to="/auctions/new">Create Auction</Link>
             </li>
             <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+            <li>
               <button className={styles.logoutButton} onClick={logout}>
                 Logout
               </button>

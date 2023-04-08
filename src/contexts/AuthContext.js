@@ -1,5 +1,4 @@
-// AuthContext.js
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 export const AuthContext = createContext();
@@ -7,6 +6,23 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("auth-token");
+    if (token) {
+      axios
+        .get("http://localhost:5000/users/", {
+          headers: { "auth-token": token },
+        })
+        .then((response) => {
+          setUser(response.data);
+          setIsLoggedIn(true);
+        })
+        .catch((error) => {
+          console.error("Error during auto-login", error);
+        });
+    }
+  }, []);
 
   const login = async (email, password) => {
     try {

@@ -7,6 +7,7 @@ import Signup from "./components/Signup/Signup";
 import Auctions from "./pages/Auctions.js";
 import AuthProvider from "./contexts/AuthContext.js";
 import Navbar from "./components/Navbar/Navbar";
+import Profile from "./components/Profile/Profile";
 // import Footer from "./components/Footer/Footer";
 import "./App.css";
 import NewItemForm from "./components/Items/NewItemForm.js";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/auctions/new" element={<NewItemForm />} />
           <Route path="/auctions" element={<Auctions />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         {/* <Footer /> */}
       </div>
