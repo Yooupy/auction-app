@@ -1,28 +1,35 @@
-.container {
-  width: 100%;
-  padding: 20px;
-  background-color: white;
+.categories {
+  margin-bottom: 30px;
 }
 
 .title {
-  font-size: 24px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .list {
-  list-style: none;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
   padding: 0;
+  margin: 0;
 }
 
-.link {
-  display: block;
-  padding: 5px 0;
-  color: #3f51b5;
-  text-decoration: none;
-  font-size: 18px;
-}
+.listItem {
+  padding: 0 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 
-.link:hover {
-  text-decoration: underline;
+  &:hover {
+    background-color: #f5f5f5;
+  }
+
+  & .MuiListItemIcon-root {
+    color: #3f51b5;
+  }
+
+  & .MuiListItemText-root {
+    margin-left: 10px;
+  }
 }

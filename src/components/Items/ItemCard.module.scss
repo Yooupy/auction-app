@@ -1,46 +1,26 @@
-.itemCardContainer {
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+.itemCard {
+  margin: 0.5rem;
+  width: 300px;
+  height: 350px;
 }
 
-.itemCardImage {
-  height: 200px;
+.cardMedia {
   object-fit: cover;
+  height: 180px;
 }
 
-.itemCardDetails {
-  padding: 16px;
+.cardContent {
+  height: 140px;
 }
 
-.itemCardTitle {
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 8px;
+.description {
+  height: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.itemCardDescription {
-  font-size: 14px;
-  margin-bottom: 8px;
-}
-
-.itemCardBids {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: auto;
-  padding: 16px;
-  background-color: #f5f5f5;
-}
-
-.itemCardCurrentBid {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.itemCardTimeLeft {
-  font-size: 14px;
-  color: #666;
+.currentBid {
+  margin-top: 8px;
+  color: green;
+  font-weight: bold;
 }

@@ -19,15 +19,22 @@ const ItemCard = ({ item }) => {
             height="140"
             image={item.imageUrl}
             alt={item.title}
+            className={styles.cardMedia}
           />
-          <CardContent>
+          <CardContent className={styles.cardContent}>
             <Typography gutterBottom variant="h5" component="div">
-              {item.title}
+              {item.name}
             </Typography>
-            <Typography variant="body2" color="textSecondary">
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              className={styles.description}
+            >
               {item.description}
             </Typography>
-            <Typography variant="h6">Current Bid: {item.currentBid}</Typography>
+            <Typography variant="subtitle1" className={styles.currentBid}>
+              Starting Bid: {item.startingBid}
+            </Typography>
           </CardContent>
         </CardActionArea>
       </Link>

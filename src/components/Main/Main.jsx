@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, Typography } from "@mui/material";
 import Categories from "../Categories/Categories";
 import Filter from "../Filter/Filter";
 import ItemList from "../Items/ItemList";
 import styles from "./Main.module.scss";
-import items from "../../utils/items";
+import axios from "axios";
+// import items from "../../utils/items";
 
 const Main = () => {
+  const [items, setItems] = useState([]);
+  // const navigate = useNavigate();
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await axios.get("http://localhost:5000/items");
+      setItems(response.data);
+    }
+    fetchData();
+  }, []);
   return (
     <div className={styles.container}>
       <Grid container spacing={4}>

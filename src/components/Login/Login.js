@@ -2,13 +2,12 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { AuthContext } from "../../contexts/AuthContext.js";
-// import { useNavigation } from "react-navi";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useContext(AuthContext);
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -22,7 +21,7 @@ const Login = () => {
     event.preventDefault();
     try {
       await login(email, password);
-      navigation.navigate("/");
+      navigate("/profile");
     } catch (error) {
       console.log(error);
     }

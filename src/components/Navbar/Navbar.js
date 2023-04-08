@@ -4,7 +4,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
-  const { currentUser, logout } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <nav className={styles.nav}>
@@ -13,13 +13,18 @@ const Navbar = () => {
         <li>
           <Link to="/">Home</Link>
         </li>
-        {currentUser ? (
+        {user ? (
           <>
             <li>
-              <Link to="/create-auction">Create Auction</Link>
+              <Link to="/auctions/new">Create Auction</Link>
             </li>
             <li>
-              <button onClick={logout}>Logout</button>
+              <Link to="/profile">Profile</Link>
+            </li>
+            <li>
+              <button className={styles.logoutButton} onClick={logout}>
+                Logout
+              </button>
             </li>
           </>
         ) : (
