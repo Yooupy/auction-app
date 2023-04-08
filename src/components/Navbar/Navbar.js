@@ -16,10 +16,12 @@ const Navbar = () => {
         {user ? (
           <>
             <li>
-              <Link to="/create-auction">Create Auction</Link>
+              <Link to="/auctions/new">Create Auction</Link>
             </li>
             <li>
-              <button onClick={logout}>Logout</button>
+              <button className={styles.logoutButton} onClick={logout}>
+                Logout
+              </button>
             </li>
           </>
         ) : (

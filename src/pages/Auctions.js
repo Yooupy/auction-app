@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import ItemList from "../components/Items/ItemList";
 
 const ItemCard = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -47,7 +48,7 @@ const ItemDescription = styled(Typography)({
 
 const Auctions = () => {
   const [items, setItems] = useState([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -57,9 +58,9 @@ const Auctions = () => {
     fetchData();
   }, []);
 
-  const handleItemClick = (itemId) => {
-    navigate(`/items/${itemId}`);
-  };
+  // const handleItemClick = (itemId) => {
+  //   navigate(`/items/${itemId}`);
+  // };
 
   return (
     <Box
@@ -71,14 +72,7 @@ const Auctions = () => {
         padding: 4,
       }}
     >
-      {items.map((item) => (
-        <ItemCard key={item.id} onClick={() => handleItemClick(item.id)}>
-          <ItemImage src={item.pictureUrl} alt="item picture" />
-          <ItemName variant="h6">{item.name}</ItemName>
-          <ItemPrice variant="subtitle1">${item.price}</ItemPrice>
-          <ItemDescription variant="body2">{item.description}</ItemDescription>
-        </ItemCard>
-      ))}
+      <ItemList items={items} />
     </Box>
   );
 };
