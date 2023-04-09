@@ -7,7 +7,9 @@ function Users() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get("http://localhost:5000/users");
+      const response = await axios.get(
+        "https://auction-api-k5qg.onrender.com/users"
+      );
       setUsers(response.data);
     }
 

@@ -30,7 +30,7 @@ function NewItemForm() {
 
       console.log(categories);
 
-      await axios.post("http://localhost:5000/items", data, {
+      await axios.post("https://auction-api-k5qg.onrender.com/items", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
