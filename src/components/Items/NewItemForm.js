@@ -26,7 +26,7 @@ function NewItemForm() {
       data.append("description", description);
       data.append("startingBid", startingBid);
       data.append("categories", JSON.stringify(categories));
-      data.append("hours", hours);
+      data.append("counter", hours);
 
       console.log(categories);
 
