@@ -33,7 +33,7 @@ const Profile = () => {
     event.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:5000/users/${user._id}`,
+        `https://auction-api-k5qg.onrender.com/users/${user._id}`,
         {
           name,
           email,
@@ -55,7 +55,7 @@ const Profile = () => {
   const handleFetchItems = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/items/user/${user._id}`
+        `https://auction-api-k5qg.onrender.com/items/user/${user._id}`
       );
       setItems(response.data);
     } catch (error) {

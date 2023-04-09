@@ -10,7 +10,9 @@ function Auctions() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get("http://localhost:5000/items");
+      const response = await axios.get(
+        "https://auction-api-k5qg.onrender.com/items"
+      );
       setItems(response.data);
       setFilteredItems(response.data);
     }

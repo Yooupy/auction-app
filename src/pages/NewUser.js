@@ -11,11 +11,14 @@ const NewUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/users", {
-        name,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://auction-api-k5qg.onrender.com/users",
+        {
+          name,
+          email,
+          password,
+        }
+      );
       if (response.data) {
         alert("User created successfully.");
         navigate("/users");

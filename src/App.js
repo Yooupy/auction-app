@@ -11,6 +11,7 @@ import Profile from "./components/Profile/Profile";
 // import Footer from "./components/Footer/Footer";
 import "./App.css";
 import NewItemForm from "./components/Items/NewItemForm.js";
+import Admin from "./components/Admin/Admin.jsx";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/auctions/new" element={<NewItemForm />} />
           <Route path="/auctions" element={<Auctions />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
         {/* <Footer /> */}
       </div>

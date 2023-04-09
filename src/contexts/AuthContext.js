@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
     const token = localStorage.getItem("auth-token");
     if (token) {
       axios
-        .get("http://localhost:5000/users/", {
+        .get("https://auction-api-k5qg.onrender.com/users/", {
           headers: { "auth-token": token },
         })
         .then((response) => {
@@ -26,10 +26,13 @@ const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post("http://localhost:5000/users/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://auction-api-k5qg.onrender.com/users/login",
+        {
+          email,
+          password,
+        }
+      );
       const userData = response.data;
       const token = response.headers["auth-token"];
       localStorage.setItem("auth-token", token);

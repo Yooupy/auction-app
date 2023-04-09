@@ -9,6 +9,8 @@ function NewItemForm() {
   const [description, setDescription] = useState("");
   const [startingBid, setStartingBid] = useState(0);
   const [image, setImage] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [hours, setHours] = useState(0);
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
@@ -23,8 +25,12 @@ function NewItemForm() {
       data.append("name", name);
       data.append("description", description);
       data.append("startingBid", startingBid);
+      data.append("categories", JSON.stringify(categories));
+      data.append("hours", hours);
 
-      await axios.post("http://localhost:5000/items", data, {
+      console.log(categories);
+
+      await axios.post("https://auction-api-k5qg.onrender.com/items", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -33,6 +39,14 @@ function NewItemForm() {
       navigate("/auctions");
     } catch (error) {
       console.error(error.config);
+    }
+  }
+  function handleCategoryChange(event) {
+    const { value } = event.target;
+    if (categories.includes(value)) {
+      setCategories(categories.filter((category) => category !== value));
+    } else {
+      setCategories([...categories, value]);
     }
   }
 
@@ -83,12 +97,91 @@ function NewItemForm() {
           onChange={(event) => setImage(event.target.files[0])}
           required
         />
-        <Button type="submit" variant="contained" sx={{ mt: 2 }}>
+        <Box mt={2} display="flex">
+          <Typography variant="subtitle1" mr={1}>
+            Categories:
+          </Typography>
+          <label htmlFor="antiques">
+            <input
+              type="checkbox"
+              id="antiques"
+              name="categories"
+              value="Antiques"
+              onChange={handleCategoryChange}
+            />
+            Antiques
+          </label>
+          <label htmlFor="art">
+            <input
+              type="checkbox"
+              id="art"
+              name="categories"
+              value="Art"
+              onChange={handleCategoryChange}
+            />
+            Art
+          </label>
+          <label htmlFor="books">
+            <input
+              type="checkbox"
+              id="books"
+              name="categories"
+              value="Books"
+              onChange={handleCategoryChange}
+            />
+            Books
+          </label>
+          <label htmlFor="electronics">
+            <input
+              type="checkbox"
+              id="electronics"
+              name="categories"
+              value="Electronics"
+              onChange={handleCategoryChange}
+            />
+            Electronics
+          </label>
+          <label htmlFor="fashion">
+            <input
+              type="checkbox"
+              id="fashion"
+              name="categories"
+              value="Fashion"
+              onChange={handleCategoryChange}
+            />
+            Fashion
+          </label>
+          <label htmlFor="home">
+            <input
+              type="checkbox"
+              id="home"
+              name="categories"
+              value="Home"
+              onChange={handleCategoryChange}
+            />
+            Home
+          </label>
+        </Box>
+        <TextField
+          label="Hours"
+          type="number"
+          variant="outlined"
+          margin="normal"
+          fullWidth
+          value={hours}
+          onChange={(event) => setHours(event.target.value)}
+          required
+        />
+        <Button
+          type="submit"
+          onClick={handleSubmit}
+          variant="contained"
+          sx={{ mt: 2 }}
+        >
           Add Item
         </Button>
       </form>
     </Box>
   );
 }
-
 export default NewItemForm;
