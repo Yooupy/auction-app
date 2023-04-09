@@ -20,25 +20,13 @@ const Categories = () => {
           <ListItemIcon>
             <FaStar />
           </ListItemIcon>
-          <ListItemText primary="Top Items" />
+          <ListItemText primary="Art" />
         </ListItem>
         <ListItem button className={styles.listItem}>
           <ListItemIcon>
             <FaStar />
           </ListItemIcon>
-          <ListItemText primary="Popular Items" />
-        </ListItem>
-        <ListItem button className={styles.listItem}>
-          <ListItemIcon>
-            <FaStar />
-          </ListItemIcon>
-          <ListItemText primary="New Items" />
-        </ListItem>
-        <ListItem button className={styles.listItem}>
-          <ListItemIcon>
-            <FaStar />
-          </ListItemIcon>
-          <ListItemText primary="Ends Soon" />
+          <ListItemText primary="Books" />
         </ListItem>
         <ListItem button className={styles.listItem}>
           <ListItemIcon>
@@ -50,25 +38,19 @@ const Categories = () => {
           <ListItemIcon>
             <FaStar />
           </ListItemIcon>
-          <ListItemText primary="Home & Garden" />
-        </ListItem>
-        <ListItem button className={styles.listItem}>
-          <ListItemIcon>
-            <FaStar />
-          </ListItemIcon>
-          <ListItemText primary="Sports & Outdoors" />
-        </ListItem>
-        <ListItem button className={styles.listItem}>
-          <ListItemIcon>
-            <FaStar />
-          </ListItemIcon>
           <ListItemText primary="Fashion" />
         </ListItem>
         <ListItem button className={styles.listItem}>
           <ListItemIcon>
             <FaStar />
           </ListItemIcon>
-          <ListItemText primary="Toys & Games" />
+          <ListItemText primary="Home" />
+        </ListItem>
+        <ListItem button className={styles.listItem}>
+          <ListItemIcon>
+            <FaStar />
+          </ListItemIcon>
+          <ListItemText primary="Antiques" />
         </ListItem>
       </List>
     </div>
