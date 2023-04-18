@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import ItemCard from "./ItemCard";
-import styles from "./ItemLists.module.scss";
+import styles from "./styles.module.scss";
 
 const ItemList = ({ items }) => {
   return (
