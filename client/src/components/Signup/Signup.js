@@ -5,6 +5,7 @@ import styles from "./Signup.module.scss";
 
 function Signup() {
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const [formData, setFormData] = useState({
     name: "",
@@ -21,16 +22,13 @@ function Signup() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch(
-      "https://auction-api-k5qg.onrender.com/users/register",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      }
-    );
+    const response = await fetch(`${apiUrl}/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
 
     if (response.ok) {
       navigate("/login");

@@ -4,12 +4,11 @@ import axios from "axios";
 
 function Users() {
   const [users, setUsers] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(
-        "https://auction-api-k5qg.onrender.com/users"
-      );
+      const response = await axios.get(`${apiUrl}/users`);
       setUsers(response.data);
     }
 
