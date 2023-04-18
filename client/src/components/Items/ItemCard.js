@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import styles from "./ItemCard.module.scss";
+import styles from "./styles.module.scss";
 
 const ItemCard = ({ item }) => {
   const [timer, setTimer] = useState("");

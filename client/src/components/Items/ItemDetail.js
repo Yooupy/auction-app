@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import styles from "./ItemDetails.module.scss";
+import styles from "./styles.module.scss";
 
 const ItemDetails = ({ item, onBidClick }) => {
   return (
