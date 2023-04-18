@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-import styles from "./Admin.module.scss";
+import styles from "./styles.module.scss";
 import ItemList from "../Items/ItemList";
 import UserList from "../Users/UserList";
 import Wallet from "../Wallet/Wallet";
