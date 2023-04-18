@@ -3,6 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import styles from "./NewItem.module.scss";
+import { DateTimePicker, LocalizationProvider } from "@mui/lab";
+import AdapterDayjs from "@mui/lab/AdapterDayjs";
+// import dayjs from "dayjs";
 
 function NewItemForm() {
   const [name, setName] = useState("");
@@ -12,11 +15,16 @@ function NewItemForm() {
   const [categories, setCategories] = useState([]);
   const [hours, setHours] = useState(0);
   const navigate = useNavigate();
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const handleDateChange = (newDate) => {
+    setSelectedDate(newDate);
+  };
 
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      if (!name || !description || !startingBid || !image) {
+      if (!name || !description || !startingBid || !image || !hours) {
         throw new Error("Please fill in all fields and select an image.");
       }
 
@@ -26,11 +34,15 @@ function NewItemForm() {
       data.append("description", description);
       data.append("startingBid", startingBid);
       data.append("categories", JSON.stringify(categories));
-      data.append("counter", hours);
+
+      // create a Date object from the selected expiration date
+      const expirationDate = new Date();
+      expirationDate.setHours(expirationDate.getHours() + parseInt(hours));
+      data.append("expirationDate", expirationDate.toISOString());
 
       console.log(categories);
 
-      await axios.post("https://auction-api-k5qg.onrender.com/items", data, {
+      await axios.post("http://localhost:5000/items", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -162,16 +174,29 @@ function NewItemForm() {
             Home
           </label>
         </Box>
-        <TextField
-          label="Hours"
-          type="number"
-          variant="outlined"
-          margin="normal"
-          fullWidth
-          value={hours}
-          onChange={(event) => setHours(event.target.value)}
-          required
-        />
+        {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <DateTimePicker
+            renderInput={(props) => (
+              <TextField {...props} margin="normal" fullWidth />
+            )}
+            label="Expiration date"
+            value={expirationDate}
+            onChange={(newValue) => {
+              setExpirationDate(newValue);
+            }}
+            disablePast
+            showTodayButton
+          />
+        </LocalizationProvider> */}
+        <LocalizationProvider dateAdapter={AdapterDayjs} locale="en">
+          <DateTimePicker
+            renderInput={(props) => <TextField {...props} />}
+            label="Select Date and Time"
+            value={selectedDate}
+            onChange={handleDateChange}
+            disablePast
+          />
+        </LocalizationProvider>
         <Button
           type="submit"
           onClick={handleSubmit}
