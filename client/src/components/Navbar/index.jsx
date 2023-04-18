@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
-import styles from "./Navbar.module.scss";
+import styles from "./styles.module.scss";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
