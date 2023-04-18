@@ -13,7 +13,7 @@ cloudinary.config({
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-import Item from "../models/itemSchema.js";
+import Item from "../../models/itemSchema.js";
 
 // Get all items
 router.get("/", async (req, res) => {
