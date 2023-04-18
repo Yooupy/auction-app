@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 import cors from "cors";
 import usersRouter from "./routes/users.js";
 import itemsRouter from "./routes/items.js";
-import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { v2 as cloudinary } from "cloudinary";
 
@@ -39,23 +38,6 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
   console.log("Connected to MongoDB");
-});
-
-// Check if user is authenticated
-app.use((req, res, next) => {
-  const authHeader = req.headers.authorization;
-  if (authHeader) {
-    const token = authHeader.split(" ")[1];
-    jwt.verify(token, "secret123", (err, user) => {
-      if (err) {
-        return res.sendStatus(403);
-      }
-      req.user = user;
-      next();
-    });
-  } else {
-    res.sendStatus(401);
-  }
 });
 
 // Start the server
