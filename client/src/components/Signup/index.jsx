@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
-import styles from "./Signup.module.scss";
+import styles from "./styles.module.scss";
 
 function Signup() {
   const navigate = useNavigate();

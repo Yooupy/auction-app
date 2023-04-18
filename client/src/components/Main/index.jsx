@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Typography } from "@mui/material";
-import Categories from "../Categories/Categories";
-import Filter from "../Filter/Filter";
+import Categories from "../Categories";
+import Filter from "../Filter";
 import ItemList from "../Items/ItemList";
-import styles from "./Main.module.scss";
+import styles from "./styles.module.scss";
 import axios from "axios";
 // import items from "../../utils/items";
 
 const Main = () => {
   const [items, setItems] = useState([]);
-  const apiUrl = process.env.REACT_APP_API_URL;
   // const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(`${apiUrl}/items`);
+      const response = await axios.get(
+        "https://auction-api-k5qg.onrender.com/items"
+      );
       setItems(response.data);
     }
     fetchData();

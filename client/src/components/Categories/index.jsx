@@ -6,7 +6,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import styles from "./Categories.module.scss";
+import styles from "./styles.module.scss";
 import { FaStar } from "react-icons/fa";
 
 const Categories = () => {

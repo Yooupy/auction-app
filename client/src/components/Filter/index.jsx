@@ -9,7 +9,7 @@ import {
   Box,
   Stack,
 } from "@mui/material";
-import styles from "./Filter.module.scss";
+import styles from "./styles.module.scss";
 
 const Filter = () => {
   return (

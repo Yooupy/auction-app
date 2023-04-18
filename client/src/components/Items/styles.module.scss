@@ -1,3 +1,38 @@
+// New item:
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 64px);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+}
+
+//ITEM LIST:
+// .itemCardWrapper {
+//   margin-bottom: 20px;
+// }
+
+// .itemList {
+//   margin: 20px auto;
+//   max-width: 1200px;
+
+//   @media only screen and (min-width: 600px) {
+//     padding: 16px;
+//   }
+
+//   @media only screen and (min-width: 960px) {
+//     padding: 24px;
+//   }
+// }
+
+//ITEM DETAILS:
 .item-details {
   padding: 16px;
   border: 1px solid #ccc;
@@ -65,4 +100,35 @@
       color: white;
     }
   }
+}
+
+// ITEM CARD:
+.itemCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardMedia {
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.cardContent {
+  padding: 16px;
+}
+
+.currentBid {
+  margin-top: 16px;
+}
+
+.statusOpen {
+  color: green;
+  margin-top: 16px;
+}
+
+.statusClosed {
+  color: red;
+  margin-top: 16px;
 }
