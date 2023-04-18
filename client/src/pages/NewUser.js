@@ -7,18 +7,16 @@ const NewUser = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "https://auction-api-k5qg.onrender.com/users",
-        {
-          name,
-          email,
-          password,
-        }
-      );
+      const response = await axios.post(`${apiUrl}/users`, {
+        name,
+        email,
+        password,
+      });
       if (response.data) {
         alert("User created successfully.");
         navigate("/users");

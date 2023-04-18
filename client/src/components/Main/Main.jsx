@@ -9,11 +9,12 @@ import axios from "axios";
 
 const Main = () => {
   const [items, setItems] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL;
   // const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get("https://auction-api-k5qg.onrender.com/items");
+      const response = await axios.get(`${apiUrl}/items`);
       setItems(response.data);
     }
     fetchData();
