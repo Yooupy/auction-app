@@ -11,6 +11,7 @@ const Profile = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(null);
   const [items, setItems] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -31,14 +32,11 @@ const Profile = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.put(
-        `https://auction-api-k5qg.onrender.com/users/${user._id}`,
-        {
-          name,
-          email,
-          password,
-        }
-      );
+      const response = await axios.put(`${apiUrl}/${user._id}`, {
+        name,
+        email,
+        password,
+      });
       const updatedUser = response.data;
       setName(updatedUser.name);
       setEmail(updatedUser.email);
@@ -53,9 +51,7 @@ const Profile = () => {
 
   const handleFetchItems = async () => {
     try {
-      const response = await axios.get(
-        `https://auction-api-k5qg.onrender.com/items/user/${user._id}`
-      );
+      const response = await axios.get(`${apiUrl}/${user._id}`);
       setItems(response.data);
     } catch (error) {
       console.error("Error fetching items", error);

@@ -7,12 +7,11 @@ import { Grid } from "@mui/material";
 function Auctions() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(
-        "https://auction-api-k5qg.onrender.com/items"
-      );
+      const response = await axios.get(`${apiUrl}/items`);
       setItems(response.data);
       setFilteredItems(response.data);
     }

@@ -6,12 +6,13 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const token = localStorage.getItem("auth-token");
     if (token) {
       axios
-        .get("https://auction-api-k5qg.onrender.com/users/", {
+        .get(`${apiUrl}/users/`, {
           headers: { "auth-token": token },
         })
         .then((response) => {
@@ -26,13 +27,10 @@ const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post(
-        "https://auction-api-k5qg.onrender.com/users/login",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post(`${apiUrl}/users/login`, {
+        email,
+        password,
+      });
       const userData = response.data;
       const token = response.headers["auth-token"];
       localStorage.setItem("auth-token", token);
