@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar";
 import Profile from "./components/Profile";
 // import Footer from "./components/Footer/Footer";
 import "./App.css";
-import NewItemForm from "./components/Items/NewItemForm.js";
+import NewItemForm from "./components/Items/NewItem";
 import Admin from "./components/Admin";
 
 function App() {
