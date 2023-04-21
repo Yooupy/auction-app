@@ -1,7 +1,7 @@
 import React from "react";
-import bannerImage1 from "../../assets/banner1.jpg";
-import bannerImage2 from "../../assets/banner2.jpg";
-import bannerImage3 from "../../assets/banner3.jpg";
+import bannerImage1 from "../../../assets/banner1.jpg";
+import bannerImage2 from "../../../assets/banner2.jpg";
+import bannerImage3 from "../../../assets/banner3.jpg";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import styles from "./styles.module.scss";

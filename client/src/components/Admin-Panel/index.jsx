@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 import ItemList from "../Items/ItemList";
 import UserList from "../Users/UserList";
-import Wallet from "../Wallet/Wallet";
+import Wallet from "../Users/Wallet/Wallet";
 import AdminProfile from "./AdminProfile";
 
 const Admin = () => {

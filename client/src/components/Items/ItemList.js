@@ -4,6 +4,10 @@ import ItemCard from "./ItemCard";
 import styles from "./styles.module.scss";
 
 const ItemList = ({ items }) => {
+  if (!Array.isArray(items)) {
+    return <div>No items found</div>;
+  }
+
   return (
     <Grid container spacing={2} className={styles.itemList}>
       {items.map((item) => (

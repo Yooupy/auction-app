@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import { Box, Button, TextField, Typography, Divider } from "@mui/material";
-import { AuthContext } from "../../contexts/AuthContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 import axios from "axios";
-import ItemList from "../Items/ItemList";
+import ItemList from "../../Items/ItemList";
 const Profile = () => {
   const { user } = useContext(AuthContext);
   const [name, setName] = useState(user ? user.name : "");

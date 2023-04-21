@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { AuthContext } from "../../contexts/AuthContext.js";
+import { AuthContext } from "../../../contexts/AuthContext.js";
 
 const Login = () => {
   const [email, setEmail] = useState("");
