@@ -1,41 +1,30 @@
-.admin-page {
-  display: flex;
-  flex-direction: row;
-  height: calc(100vh - 64px); /* Subtract navbar height */
+.leftSide {
   padding: 16px;
+  margin: 16px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-  .sidebar {
-    width: 200px;
-    height: 100%;
-    background-color: #f0f0f0;
-    padding: 16px;
+.optionButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
 
-    ul {
-      list-style-type: none;
-      padding: 0;
+.optionButton {
+  margin: 0;
+}
 
-      li {
-        margin-bottom: 8px;
-        cursor: pointer;
-        transition: all 0.3s;
+.activeOption {
+  background-color: #1976d2;
+  color: #fff;
+}
 
-        &:hover {
-          background-color: #ccc;
-        }
-
-        &.active {
-          background-color: #ddd;
-        }
-      }
-    }
-  }
-
-  .content {
-    flex: 1;
-    margin-left: 16px;
-    background-color: #fff;
-    padding: 16px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+.rightSide {
+  padding: 16px;
+  margin: 16px;
+  min-height: 400px;
 }

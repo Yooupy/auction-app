@@ -21,12 +21,14 @@ const ItemDetails = ({ item, onBidClick }) => {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {item.title}
+          {item.name}
         </Typography>
         <Typography variant="body2" color="textSecondary">
           {item.description}
         </Typography>
+        <Typography variant="h6">Starting Bid: {item.startingBid}</Typography>
         <Typography variant="h6">Current Bid: {item.currentBid}</Typography>
+        <Typography variant="h6">Time Left: {item.timer}</Typography>
       </CardContent>
       <CardActions>
         <Button
@@ -34,8 +36,9 @@ const ItemDetails = ({ item, onBidClick }) => {
           color="primary"
           onClick={onBidClick}
           className={styles.bidButton}
+          disabled={item.timer === "Closed"}
         >
-          Bid
+          Place Bid
         </Button>
         <Link to="/">Go Back</Link>
       </CardActions>
