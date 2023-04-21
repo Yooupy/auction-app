@@ -47,6 +47,7 @@ function Signup() {
           name="name"
           value={formData.name}
           onChange={handleInputChange}
+          sx={{ borderRadius: 0 }}
         />
         <TextField
           label="Email"
@@ -54,6 +55,7 @@ function Signup() {
           name="email"
           value={formData.email}
           onChange={handleInputChange}
+          sx={{ borderRadius: 0 }}
         />
         <TextField
           label="Password"
@@ -62,8 +64,9 @@ function Signup() {
           name="password"
           value={formData.password}
           onChange={handleInputChange}
+          sx={{ borderRadius: 0 }}
         />
-        <Button variant="contained" type="submit">
+        <Button variant="contained" type="submit" sx={{ borderRadius: 0 }}>
           Signup
         </Button>
       </form>
