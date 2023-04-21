@@ -1,17 +1,17 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home.js";
-import NewUser from "./pages/NewUser";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import Auctions from "./pages/Auctions.js";
+import { Home, Auctions, NewUser } from "./pages/index.js";
+
+import Login from "./components/Auth/Login/index.jsx";
+import Signup from "./components/Auth/Signup/index.jsx";
+
 import AuthProvider from "./contexts/AuthContext.js";
-import Navbar from "./components/Navbar";
-import Profile from "./components/Profile";
+import Navbar from "./components/Dashboard/Navbar";
+import Profile from "./components/Users/Profile";
 // import Footer from "./components/Footer/Footer";
 import "./App.css";
 import NewItemForm from "./components/Items/NewItem";
-import Admin from "./components/Admin";
+import Admin from "./components/Admin-Panel/index.jsx";
 
 function App() {
   return (
