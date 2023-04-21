@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import {
   Card,
   CardActionArea,
@@ -8,12 +9,12 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 
 const ItemCard = ({ item }) => {
   const [timer, setTimer] = useState("");
   const [bidAmount, setBidAmount] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedEndTime = localStorage.getItem(`endTime-${item.id}`);
@@ -73,76 +74,70 @@ const ItemCard = ({ item }) => {
     console.log(`Submitted bid of ${bidAmount} for item ${item.id}`);
     setBidAmount("");
   };
-
   return (
-    <Card className={styles.itemCard}>
-      <Link to={`/items/${item.id}`}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image={item.imageUrl}
-            alt={item.title}
-            className={styles.cardMedia}
+    <Link className={styles.itemCard} to={`/items/${item.id}`}>
+      <CardMedia
+        component="img"
+        height="140"
+        image={item.imageUrl}
+        alt={item.title}
+        className={styles.cardMedia}
+      />
+      <CardContent className={styles.cardContent}>
+        <Typography gutterBottom variant="h5" component="div">
+          {item.name}
+        </Typography>
+        <Typography
+          variant="body2"
+          color="textSecondary"
+          className={styles.description}
+        >
+          {item.description}
+        </Typography>
+        <Typography variant="subtitle1" className={styles.currentBid}>
+          Starting Bid: {item.startingBid}
+        </Typography>
+        {item.categories.length > 0 && (
+          <Typography variant="subtitle1">
+            Category{item.categories.length > 1 ? "ies" : ""}:{" "}
+            {item.categories.map((category, index) => (
+              <span key={category}>
+                {category}
+                {index < item.categories.length - 1 ? ", " : ""}
+              </span>
+            ))}
+          </Typography>
+        )}
+        <Typography variant="subtitle1">Time Left: {timer}</Typography>
+        <Typography
+          variant="subtitle1"
+          className={
+            item.status === true ? styles.statusOpen : styles.statusClosed
+          }
+        >
+          Status: {item.status === true ? "Open" : "Closed"}
+        </Typography>
+        <form onSubmit={handleBidSubmit}>
+          <TextField
+            id="bidAmount"
+            label="Enter bid amount"
+            type="number"
+            variant="outlined"
+            value={bidAmount}
+            onChange={handleBidChange}
+            margin="normal"
           />
-          <CardContent className={styles.cardContent}>
-            <Typography gutterBottom variant="h5" component="div">
-              {item.name}
-            </Typography>
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              className={styles.description}
-            >
-              {item.description}
-            </Typography>
-            <Typography variant="subtitle1" className={styles.currentBid}>
-              Starting Bid: {item.startingBid}
-            </Typography>
-            {item.categories.length > 0 && (
-              <Typography variant="subtitle1">
-                Category{item.categories.length > 1 ? "ies" : ""}:{" "}
-                {item.categories.map((category, index) => (
-                  <span key={category}>
-                    {category}
-                    {index < item.categories.length - 1 ? ", " : ""}
-                  </span>
-                ))}
-              </Typography>
-            )}
-            <Typography variant="subtitle1">Time Left: {timer}</Typography>
-            <Typography
-              variant="subtitle1"
-              className={
-                item.status === true ? styles.statusOpen : styles.statusClosed
-              }
-            >
-              Status: {item.status === true ? "Open" : "Closed"}
-            </Typography>
-            <form onSubmit={handleBidSubmit}>
-              <TextField
-                id="bidAmount"
-                label="Enter bid amount"
-                type="number"
-                variant="outlined"
-                value={bidAmount}
-                onChange={handleBidChange}
-                margin="normal"
-              />
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                disabled={timer === "Closed"}
-              >
-                Place Bid
-              </Button>
-            </form>
-          </CardContent>
-        </CardActionArea>
-      </Link>
-    </Card>
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            disabled={timer === "Closed"}
+          >
+            Place Bid
+          </Button>
+        </form>
+      </CardContent>
+    </Link>
   );
 };
-
 export default ItemCard;

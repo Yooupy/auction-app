@@ -1,6 +1,6 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
-import { Home, Auctions, NewUser } from "./pages/index.js";
+import { Routes, Route, useParams } from "react-router-dom";
+import { Auctions, Home } from "./pages/index.js";
 
 import Login from "./components/Auth/Login/index.jsx";
 import Signup from "./components/Auth/Signup/index.jsx";
@@ -8,10 +8,11 @@ import Signup from "./components/Auth/Signup/index.jsx";
 import AuthProvider from "./contexts/AuthContext.js";
 import Navbar from "./components/Dashboard/Navbar";
 import Profile from "./components/Users/Profile";
-// import Footer from "./components/Footer/Footer";
-import "./App.css";
 import NewItemForm from "./components/Items/NewItem";
+import ItemDetails from "./components/Items/ItemDetail.js";
+import NewUser from "./components/Users/NewUser/NewUser.jsx";
 import Admin from "./components/Admin-Panel/index.jsx";
+import NotFound from "./components/Dashboard/Main/404.jsx";
 
 function App() {
   return (
@@ -20,18 +21,24 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/new-user" element={<NewUser />} />
+          <Route path="/auctions" element={<Auctions />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/auctions/new" element={<NewItemForm />} />
-          <Route path="/auctions" element={<Auctions />} />
+          <Route path="/new-item" element={<NewItemForm />} />
+          <Route path="/items/:id" element={<ItemDetailsWrapper />} />
+          <Route path="/new-user" element={<NewUser />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
-        {/* <Footer /> */}
       </div>
     </AuthProvider>
   );
+}
+
+function ItemDetailsWrapper() {
+  const { id } = useParams();
+  return <ItemDetails item={id} />;
 }
 
 export default App;
