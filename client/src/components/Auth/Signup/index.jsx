@@ -4,6 +4,7 @@ import { TextField, Button } from "@mui/material";
 import styles from "./styles.module.scss";
 
 function Signup() {
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -22,7 +23,7 @@ function Signup() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch(`${apiUrl}/users/register`, {
+    const response = await fetch(`http://localhost:5000/users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,13 +34,15 @@ function Signup() {
     if (response.ok) {
       navigate("/login");
     } else {
-      console.error("Failed to create user");
+      const errorData = await response.json();
+      setError(errorData.message || "Failed to create user");
     }
   };
 
   return (
     <div className={styles["signup-container"]}>
       <h1>Signup</h1>
+      {error && <p className={styles["error-message"]}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <TextField
           label="Name"
@@ -47,6 +50,7 @@ function Signup() {
           name="name"
           value={formData.name}
           onChange={handleInputChange}
+          required
           sx={{ borderRadius: 0 }}
         />
         <TextField
@@ -55,6 +59,7 @@ function Signup() {
           name="email"
           value={formData.email}
           onChange={handleInputChange}
+          required
           sx={{ borderRadius: 0 }}
         />
         <TextField
@@ -64,8 +69,10 @@ function Signup() {
           name="password"
           value={formData.password}
           onChange={handleInputChange}
+          required
           sx={{ borderRadius: 0 }}
         />
+
         <Button variant="contained" type="submit" sx={{ borderRadius: 0 }}>
           Signup
         </Button>
