@@ -15,7 +15,7 @@ import ItemDetails from "./components/Items/ItemDetail.js";
 import NewUser from "./components/Users/NewUser/NewUser.jsx";
 import Admin from "./components/Admin-Panel/index.jsx";
 import NotFound from "./components/Dashboard/Main/404.jsx";
-
+import "./global.css";
 function App() {
   return (
     <AuthProvider>
