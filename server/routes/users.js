@@ -4,13 +4,12 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 const router = express.Router();
-import userSchema from "../models/userSchema.js";
+import User from "../models/userSchema.js";
+
 import { auth } from "../verifyToken.js";
 import { registerValidation, loginValidation } from "../validation.js";
 
 dotenv.config();
-
-const User = mongoose.model("User", userSchema);
 
 // Add a user
 router.post("/register", async (req, res) => {
@@ -81,16 +80,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// Get all users
-router.get("/", async (req, res) => {
-  try {
-    const users = await User.find();
-    res.send(users);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
-
 // Get a user by ID
 router.get("/:id", auth, async (req, res) => {
   const { id } = req.params;
@@ -105,35 +94,45 @@ router.get("/:id", auth, async (req, res) => {
   }
 });
 
-// Update a user by ID
-router.patch("/:id", async (req, res) => {
-  const { id } = req.params;
+// Get all users
+router.get("/", async (req, res) => {
   try {
-    const user = await User.findByIdAndUpdate(id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-    if (!user) {
-      return res.status(404).send();
-    }
-    res.send(user);
-  } catch (err) {
-    res.status(400).send(err);
-  }
-});
-
-// Delete a user by ID
-router.delete("/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    const user = await User.findByIdAndDelete(id);
-    if (!user) {
-      return res.status(404).send();
-    }
-    res.send(user);
+    const users = await User.find();
+    res.send(users);
   } catch (err) {
     res.status(500).send(err);
   }
 });
+
+// // Update a user by ID
+// router.patch("/:id", async (req, res) => {
+//   const { id } = req.params;
+//   try {
+//     const user = await User.findByIdAndUpdate(id, req.body, {
+//       new: true,
+//       runValidators: true,
+//     });
+//     if (!user) {
+//       return res.status(404).send();
+//     }
+//     res.send(user);
+//   } catch (err) {
+//     res.status(400).send(err);
+//   }
+// });
+
+// // Delete a user by ID
+// router.delete("/:id", async (req, res) => {
+//   const { id } = req.params;
+//   try {
+//     const user = await User.findByIdAndDelete(id);
+//     if (!user) {
+//       return res.status(404).send();
+//     }
+//     res.send(user);
+//   } catch (err) {
+//     res.status(500).send(err);
+//   }
+// });
 
 export default router;
