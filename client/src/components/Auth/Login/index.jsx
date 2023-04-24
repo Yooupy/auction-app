@@ -20,7 +20,8 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await login(email, password);
+      const result = await login(email, password);
+      console.log(result); // Log the result here
       navigate("/profile");
     } catch (error) {
       console.log(error);
