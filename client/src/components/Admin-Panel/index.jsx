@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Grid, Paper, Button, Typography } from "@mui/material";
 import styles from "./styles.module.scss";
-import ItemList from "../Items/ItemList";
+// import ItemList from "../Items/ItemList";
+import ListItems from "../Items/ForAdmin/ListItems";
 import UserList from "../Users/UserList";
 import Wallet from "../Users/Wallet/Wallet";
 import AdminProfile from "./AdminProfile";
 
 const options = [
-  { name: "List of Items", component: <ItemList /> },
+  { name: "List of Items", component: <ListItems /> },
   { name: "List of Users", component: <UserList /> },
   { name: "Website Wallet", component: <Wallet /> },
   { name: "Admin Profile", component: <AdminProfile /> },

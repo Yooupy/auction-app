@@ -1,6 +1,8 @@
 import React from "react";
-import { Routes, Route, useParams } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Auctions, Home } from "./pages/index.js";
+
+import items from "./utils/items.js";
 
 import Login from "./components/Auth/Login/index.jsx";
 import Signup from "./components/Auth/Signup/index.jsx";
@@ -25,7 +27,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/new-item" element={<NewItemForm />} />
-          <Route path="/items/:id" element={<ItemDetailsWrapper />} />
+          <Route path="/item/:id" element={<ItemDetails items={items} />} />
           <Route path="/new-user" element={<NewUser />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/admin" element={<Admin />} />
@@ -34,11 +36,6 @@ function App() {
       </div>
     </AuthProvider>
   );
-}
-
-function ItemDetailsWrapper() {
-  const { id } = useParams();
-  return <ItemDetails item={id} />;
 }
 
 export default App;

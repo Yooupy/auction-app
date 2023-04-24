@@ -7,10 +7,17 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styles from "./styles.module.scss";
 
-const ItemDetails = ({ item, onBidClick }) => {
+const ItemDetails = ({ items, onBidClick }) => {
+  const { id } = useParams();
+  const item = items.find((item) => item.id === parseInt(id));
+
+  if (!item) {
+    return <div>Item not found</div>;
+  }
+
   return (
     <Card className={styles.itemDetails}>
       <CardMedia

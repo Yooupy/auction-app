@@ -75,7 +75,7 @@ const ItemCard = ({ item }) => {
     setBidAmount("");
   };
   return (
-    <Link className={styles.itemCard} to={`/items/${item.id}`}>
+    <Link className={styles.itemCard} to={`/item/${item.id}`}>
       <CardMedia
         component="img"
         height="140"

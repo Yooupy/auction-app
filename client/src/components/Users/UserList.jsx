@@ -1,24 +1,36 @@
-import React from "react";
-
-const users = [
-  { id: 1, name: "John Doe", email: "john.doe@example.com" },
-  { id: 2, name: "Jane Smith", email: "jane.smith@example.com" },
-  { id: 3, name: "Bob Johnson", email: "bob.johnson@example.com" },
-];
+import React, { useEffect, useState } from "react";
+import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 
 const UserList = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/users/");
+        const data = await response.json();
+        setUsers(data);
+      } catch (err) {
+        console.error("Failed to fetch users:", err);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
   return (
-    <div>
-      <h2>User List</h2>
-      <ul>
+    <Box>
+      <List>
         {users.map((user) => (
-          <li key={user.id}>
-            <p>Name: {user.name}</p>
-            <p>Email: {user.email}</p>
-          </li>
+          <ListItem key={user.id} divider>
+            <ListItemText
+              primary={`Name: ${user.name}`}
+              secondary={`Email: ${user.email}`}
+            />
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+    </Box>
   );
 };
 

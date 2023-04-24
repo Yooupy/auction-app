@@ -13,6 +13,7 @@ cloudinary.config({
 const upload = multer({ storage: multer.memoryStorage() });
 
 import Item from "../models/itemSchema.js";
+import { auth } from "../verifyToken.js";
 
 // Add an item
 router.post("/", upload.single("image"), async (req, res) => {
@@ -81,7 +82,7 @@ router.post("/", upload.single("image"), async (req, res) => {
 });
 
 // Get all items
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
     const items = await Item.find();
     res.send(items);

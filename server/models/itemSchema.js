@@ -28,6 +28,11 @@ const itemSchema = new Schema({
     type: Date,
     required: true,
   },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 export default mongoose.model("Item", itemSchema);

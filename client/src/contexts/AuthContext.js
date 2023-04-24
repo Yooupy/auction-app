@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
     const token = localStorage.getItem("auth-token");
     if (token) {
       axios
-        .get(`${apiUrl}/users/`, {
+        .get("http://localhost:5000/users/login", {
           headers: { "auth-token": token },
         })
         .then((response) => {
@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post(`${apiUrl}/users/login`, {
+      const response = await axios.post("http://localhost:5000/users/login", {
         email,
         password,
       });
@@ -36,6 +36,7 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("auth-token", token);
       setUser(userData);
       setIsLoggedIn(true);
+      return { userData, token }; // Add this line
     } catch (error) {
       console.error("Error during login", error);
     }
