@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { AuthContext } from "../../../contexts/AuthContext.js";
 
@@ -7,7 +7,6 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -20,9 +19,8 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const result = await login(email, password);
-      console.log(result); // Log the result here
-      navigate("/profile");
+      await login(email, password);
+      // Navigate to profile page or some other protected route on successful login
     } catch (error) {
       console.log(error);
     }

@@ -6,7 +6,7 @@ const items = [
     startingBid: "$80",
     categories: ["Fashion", "Shoes"],
     imageUrl: "https://via.placeholder.com/300x200",
-    counter: 24,
+    counter: 1024,
     status: true,
   },
   {
@@ -16,7 +16,7 @@ const items = [
     startingBid: "$150",
     categories: ["Electronics", "Audio"],
     imageUrl: "https://via.placeholder.com/300x200",
-    counter: 48,
+    counter: 1045,
     status: true,
   },
   {
