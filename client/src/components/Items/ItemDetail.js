@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Card,
@@ -10,12 +10,24 @@ import {
 import { Link, useParams } from "react-router-dom";
 import styles from "./styles.module.scss";
 
-const ItemDetails = ({ items, onBidClick }) => {
+const ItemDetails = ({ onBidClick }) => {
   const { id } = useParams();
-  const item = items.find((item) => item.id === parseInt(id));
+  const [item, setItem] = useState(null);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/items/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setItem(data))
+      .catch((err) => console.log(err));
+  }, [id]);
 
   if (!item) {
-    return <div>Item not found</div>;
+    return <div>Loading...</div>;
   }
 
   return (

@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import ItemCard from "./ItemCard";
 import styles from "./styles.module.scss";
 
-const ItemList = ({ items }) => {
+const ItemList = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/items", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setItems(data))
+      .catch((err) => console.log(err));
+  }, []);
+
   if (!Array.isArray(items)) {
     return <div>No items found</div>;
   }

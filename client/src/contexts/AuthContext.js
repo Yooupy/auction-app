@@ -3,16 +3,15 @@ import axios from "axios";
 
 export const AuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const apiUrl = process.env.REACT_APP_API_URL;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("auth-token");
     if (token) {
       axios
-        .get("http://localhost:5000/users/login", {
+        .get("http://localhost:5000/users/user", {
           headers: { "auth-token": token },
         })
         .then((response) => {
@@ -20,7 +19,7 @@ const AuthProvider = ({ children }) => {
           setIsLoggedIn(true);
         })
         .catch((error) => {
-          console.error("Error during auto-login", error);
+          console.log(error);
         });
     }
   }, []);
@@ -36,9 +35,10 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("auth-token", token);
       setUser(userData);
       setIsLoggedIn(true);
-      return { userData, token }; // Add this line
+      return { userData, token };
     } catch (error) {
       console.error("Error during login", error);
+      throw new Error("Invalid email or password");
     }
   };
 
@@ -48,11 +48,12 @@ const AuthProvider = ({ children }) => {
     setIsLoggedIn(false);
   };
 
-  return (
-    <AuthContext.Provider value={{ isLoggedIn, user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
+  const value = {
+    user,
+    isLoggedIn,
+    login,
+    logout,
+  };
 
-export default AuthProvider;
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};

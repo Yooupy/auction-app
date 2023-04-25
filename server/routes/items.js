@@ -82,7 +82,7 @@ router.post("/", upload.single("image"), async (req, res) => {
 });
 
 // Get all items
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const items = await Item.find();
     res.send(items);
@@ -139,20 +139,25 @@ router.delete("/:id", async (req, res) => {
 // Add a bid to an item
 router.post("/:id/bids", async (req, res) => {
   const { id } = req.params;
+  const { userId, bidAmount } = req.body;
+
   try {
     const item = await Item.findById(id);
     if (!item) {
       return res.status(404).send();
     }
-    if (req.body.bidAmount <= item.currentBid) {
+
+    if (bidAmount <= item.currentBid) {
       return res.status(400).send("Bid amount must be higher than current bid");
     }
-    item.currentBid = req.body.bidAmount;
+
+    item.currentBid = bidAmount;
     item.bids.push({
-      userId: req.body.userId,
-      bidAmount: req.body.bidAmount,
+      userId,
+      bidAmount,
       bidTime: new Date(),
     });
+
     await item.save();
     res.status(201).send(item);
   } catch (err) {

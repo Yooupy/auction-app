@@ -7,7 +7,7 @@ import items from "./utils/items.js";
 import Login from "./components/Auth/Login/index.jsx";
 import Signup from "./components/Auth/Signup/index.jsx";
 
-import AuthProvider from "./contexts/AuthContext.js";
+import { AuthProvider } from "./contexts/AuthContext.js"; // import your AuthProvider component
 import Navbar from "./components/Dashboard/Navbar";
 import Profile from "./components/Users/Profile";
 import NewItemForm from "./components/Items/NewItem";
@@ -19,6 +19,7 @@ import NotFound from "./components/Dashboard/Main/404.jsx";
 function App() {
   return (
     <AuthProvider>
+      {/* wrap the Routes component with your AuthProvider */}
       <div className="App">
         <Navbar />
         <Routes>
