@@ -1,0 +1,14 @@
+@use "./colors" as colors;
+@use "./breakpoints" as bp;
+//Here we will implement global scss modules
+// For example:
+
+.commonPadding {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: colors.$white;
+  @media (max-width) {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
