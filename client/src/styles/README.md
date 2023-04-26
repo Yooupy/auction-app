@@ -1,6 +1,6 @@
 # HOW TO USE SCSS GLOBALLY:
 
-## **@use** sass method:
+## **@use** sass method insted of **@import**:
 
 In sass(scss), we will use `@use` importing method instead fo @import. Because it has more capabilities than `@import`. Behind the scenes, `@use` makes easier to optimization and converting sass to pure css.
 
@@ -13,6 +13,7 @@ In sass(scss), we will use `@use` importing method instead fo @import. Because i
 ## Examples:
 
 Here you can see some code snippets:
+
 `_global.scss`
 
 ```
@@ -44,4 +45,4 @@ To use this `.commonPadding` this common global style, we should import `_global
 
 ```
 
-So, now `myCustomElement` class has inherited all properties of global `.commonPadding` class.
+So, now `.myCustomElement` class has inherited all properties of global `.commonPadding` class.
